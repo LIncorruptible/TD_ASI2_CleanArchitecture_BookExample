@@ -4,15 +4,22 @@ public class User {
 
     // Attributs
     private Long id;
-    private String name;
+    private String email;
 
     // Constructeurs
-    public User(Long id, String name) {
+
+    public User(String email) {
+        this.email = email;
+    }
+
+    public User(Long id, String email) {
         this.id = id;
-        this.name = name;
+        this.email = email;
     }
 
     // Getters/Setters
     public Long getId() { return id; }
-    public String getName() { return name; }
+    public String getEmail() { return email; }
+
+    public void setEmail(String email) { this.email = email; }
 }

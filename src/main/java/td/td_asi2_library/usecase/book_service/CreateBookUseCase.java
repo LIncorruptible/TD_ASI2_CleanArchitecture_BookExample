@@ -1,4 +1,4 @@
-package td.td_asi2_library.usecase;
+package td.td_asi2_library.usecase.book_service;
 
 import td.td_asi2_library.domain.entity.Book;
 import td.td_asi2_library.domain.repository_port.BookRepositoryPort;
@@ -12,7 +12,7 @@ public class CreateBookUseCase {
 
     public Book execute(String isbn, String title) {
         // Vérifier si le livre existe déjà
-        if (bookRepository.findByIsbn(isbn).isPresent()) {
+        if (bookRepository.findByIsbn(isbn) != null) {
             throw new RuntimeException("Book already exists with ISBN " + isbn);
         }
         // Créer l’entité Book

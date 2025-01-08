@@ -19,6 +19,10 @@ public class Loan {
         this.borrowDate = borrowDate;
     }
 
+    public Loan(String isbn, Long userId) {
+        this(null, isbn, userId, LocalDate.now());
+    }
+
     // Getters/Setters
     public Long getId() { return id; }
     public String getIsbn() { return isbn; }
