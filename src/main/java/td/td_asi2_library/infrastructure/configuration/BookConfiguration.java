@@ -3,10 +3,7 @@ package td.td_asi2_library.infrastructure.configuration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import td.td_asi2_library.domain.port.BookRepositoryPort;
-import td.td_asi2_library.domain.usecase.CreateBookUseCase;
-import td.td_asi2_library.domain.usecase.DeleteBookUseCase;
-import td.td_asi2_library.domain.usecase.GetAllBookUseCase;
-import td.td_asi2_library.domain.usecase.GetByIsbnBookUseCase;
+import td.td_asi2_library.domain.usecase.*;
 
 @Configuration
 public class BookConfiguration {
@@ -21,6 +18,9 @@ public class BookConfiguration {
     public CreateBookUseCase createBookUseCase() {
         return new CreateBookUseCase(bookRepositoryPort);
     }
+
+    @Bean
+    public EditBookUseCase editBookUseCase() { return new EditBookUseCase(bookRepositoryPort); }
 
     @Bean
     public DeleteBookUseCase deleteBookUseCase() {

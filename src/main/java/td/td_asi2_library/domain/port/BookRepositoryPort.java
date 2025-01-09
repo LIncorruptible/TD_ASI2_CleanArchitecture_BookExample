@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface BookRepositoryPort {
     void save(Book book);
+    void update(String isbn, Book book);
     void deleteByIsbn(String isbn);
 
     Book getByIsbn(String isbn);

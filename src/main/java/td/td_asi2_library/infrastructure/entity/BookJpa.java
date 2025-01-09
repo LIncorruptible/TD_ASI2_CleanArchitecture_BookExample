@@ -19,6 +19,7 @@ public class BookJpa {
     @Column(columnDefinition = "TEXT")
     private String file;
 
+    // Getters and Setters
     public String getId() { return id; }
     public void setId(String id) { this.id = id; }
 

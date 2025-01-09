@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import td.td_asi2_library.domain.entity.Book;
 import td.td_asi2_library.domain.port.BookRepositoryPort;
+import td.td_asi2_library.infrastructure.entity.BookJpa;
 import td.td_asi2_library.infrastructure.mapper.BookMapper;
 import td.td_asi2_library.infrastructure.repository.jpa.BookRepositoryJpa;
 
@@ -22,6 +23,14 @@ public class BookRepositoryAdapter implements BookRepositoryPort {
     @Override
     public void save(Book book) {
         bookRepositoryJpa.save(bookMapper.toJpa(book));
+    }
+
+    @Override
+    public void update(String isbn, Book book) {
+        BookJpa existingBookJpa = bookRepositoryJpa.getByIsbn(isbn);
+        BookJpa updatedBookJpa = bookMapper.toJpa(book);
+        updatedBookJpa.setId(existingBookJpa.getId());
+        bookRepositoryJpa.save(updatedBookJpa);
     }
 
     @Override

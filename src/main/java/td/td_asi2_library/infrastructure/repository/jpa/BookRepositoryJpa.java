@@ -16,6 +16,11 @@ public interface BookRepositoryJpa extends JpaRepository<BookJpa, Long> {
     // From Port
     @Modifying
     @Transactional
+    @Query("UPDATE BookJpa b SET b = :book WHERE b.id = :id")
+    void update(@Param("id") String id, @Param("book") BookJpa book);
+
+    @Modifying
+    @Transactional
     @Query("DELETE FROM BookJpa b WHERE b.isbn = :isbn")
     void deleteByIsbn(@Param("isbn") String isbn);
 
