@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Liste des livres</title>
+</head>
+<body>
+<h1>Liste des Livres</h1>
+<table>
+  <thead>
+  <tr>
+    <th>ISBN</th>
+    <th>Metadata</th>
+    <th>File Info</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="book : ${books}">
+    <td th:text="${book.isbn}"></td>
+    <td th:text="${book.metadata}"></td>
+    <td th:text="${book.file}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
