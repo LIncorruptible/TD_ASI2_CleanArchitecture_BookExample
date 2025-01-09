@@ -25,7 +25,10 @@ public class EditBookUseCase {
         if (!bookRepositoryPort.existingByIsbn(oldBook.getIsbn())) {
             throw new IllegalArgumentException("Book does not exist");
         }
-        if (bookRepositoryPort.existingByIsbn(updatedBook.getIsbn())) {
+        if (
+                bookRepositoryPort.existingByIsbn(updatedBook.getIsbn()) &&
+                !oldBook.getIsbn().equals(updatedBook.getIsbn())
+        ) {
             throw new IllegalArgumentException("Book already exists");
         }
         // Save

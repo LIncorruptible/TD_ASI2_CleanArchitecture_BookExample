@@ -42,4 +42,11 @@ public class Book {
     private boolean hasIsbn() { return isbn != null; }
     private boolean hasMetadata() { return metadata != null; }
     private boolean hasFile() { return file != null; }
+
+    // Equals
+    public boolean equals(Book book) {
+        return isbn.equals(book.getIsbn()) &&
+               metadata.equals(book.getMetadata()) &&
+               file.equals(book.getFile());
+    }
 }
