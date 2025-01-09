@@ -14,7 +14,7 @@ public class GetByIsbnBookUseCase {
         Book book = bookRepositoryPort.getByIsbn(isbn);
         // Controls
         if (book == null) {
-            throw new IllegalArgumentException("Book not found");
+            return new Book();
         }
         return book;
     }

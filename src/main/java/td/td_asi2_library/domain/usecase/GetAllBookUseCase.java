@@ -3,6 +3,7 @@ package td.td_asi2_library.domain.usecase;
 import td.td_asi2_library.domain.entity.Book;
 import td.td_asi2_library.domain.port.BookRepositoryPort;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GetAllBookUseCase {
@@ -16,7 +17,7 @@ public class GetAllBookUseCase {
         List<Book> books = bookRepositoryPort.getAll();
         // Controls
         if (books.isEmpty()) {
-            throw new IllegalArgumentException("No books found");
+            return new ArrayList<>();
         }
         return books;
     }

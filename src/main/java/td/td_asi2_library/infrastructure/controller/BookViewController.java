@@ -21,7 +21,14 @@ public class BookViewController {
 
     @GetMapping("/list")
     public String listBooks(Model model) {
-        model.addAttribute("books", bookPresenter.prepareListView(getAllBookUseCase.execute()));
+        var books = bookPresenter.prepareListView(getAllBookUseCase.execute());
+
+        if (books == null || books.isEmpty()) {
+            model.addAttribute("noBooksMessage", "Aucun livre n'est disponible pour le moment.");
+        } else {
+            model.addAttribute("books", books);
+        }
+
         return "book-list"; // Renvoie vers le fichier book-list.html
     }
 }
