@@ -1,26 +1,45 @@
 package td.td_asi2_library.domain.entity;
 
 public class Book {
-
-    // Attributs
+    // Attributes
     private String isbn;
-    private String title;
-    private boolean isBorrowed;
-    
-    // Constructeurs
-    public Book(String isbn, String title) {
+    private String metadata;
+    private String file;
+
+    // Constructor no-args
+    public Book() {}
+
+    // Constructor with args
+    public Book(
+        String isbn,
+        String metadata,
+        String file
+    ) {
         this.isbn = isbn;
-        this.title = title;
-        this.isBorrowed = false;
+        this.metadata = metadata;
+        this.file = file;
     }
 
-    // Getters/Setters
+    // Getters
     public String getIsbn() { return isbn; }
-    public String getTitle() { return title; }
-    public boolean isBorrowed() { return isBorrowed; }
+    public String getMetadata() { return metadata; }
+    public String getFile() { return file; }
 
+    // Setters
     public void setIsbn(String isbn) { this.isbn = isbn; }
-    public void setTitle(String title) { this.title = title; }
-    public void borrow() { this.isBorrowed = true; }
-    public void returnBook() { this.isBorrowed = false; }
+    public void setMetadata(String metadata) { this.metadata = metadata; }
+    public void setFile(String file) { this.file = file; }
+
+    // Validation
+    public boolean isValid() {
+        if (!hasIsbn()) throw new IllegalArgumentException("ISBN is required");
+        if (!hasMetadata()) throw new IllegalArgumentException("Metadata is required");
+        if (!hasFile()) throw new IllegalArgumentException("File is required");
+        return true;
+    }
+
+    // Controls
+    private boolean hasIsbn() { return isbn != null; }
+    private boolean hasMetadata() { return metadata != null; }
+    private boolean hasFile() { return file != null; }
 }
